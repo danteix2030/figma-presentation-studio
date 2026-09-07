@@ -5,8 +5,8 @@ DONE requires tests; PARTIAL indicates working subset; BLOCKED external dependen
 |Feature|Status|Implementation|Tested|Known limitations|
 |---|---|---|---|---|
 |Research / architecture|PARTIAL|docs/RESEARCH.md; canonical architecture|Official sources read|Cloud details in respective phase|
-|Plugin registration / real Figma|TODO|Not implemented|No|Pending|
-|Frame detection / selection / sorting / manual ordering|TODO|Not implemented|No|Pending|
+|Plugin registration / real Figma|DONE|Figma ID 1678935302970085901; registered Desktop directory|Opened in real Figma Design 2026-09-07|Design only; other editors pending|
+|Frame detection / selection / sorting / manual ordering|PARTIAL|Top-level frame/component/instance metadata and four sort modes|172 real nodes detected; 3 unit tests|Manual ordering pending|
 |Layer parser / fonts / fills / vectors / fidelity|TODO|Not implemented|No|Pending|
 |Animations entrance / exit / emphasis / triggers|TODO|Not implemented|No|Pending|
 |Custom keyframes / cubic bezier / stagger|TODO|Not implemented|No|Pending|

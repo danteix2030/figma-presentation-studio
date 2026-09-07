@@ -1,0 +1,3 @@
+figma.showUI(__html__, {width:880,height:620,themeColors:true});
+async function list() { await figma.currentPage.loadAsync(); const frames=figma.currentPage.children.filter(n=>['FRAME','COMPONENT','INSTANCE'].includes(n.type)).map((n,order)=>({id:n.id,name:n.name,x:n.x,y:n.y,width:n.width,height:n.height,order})); figma.ui.postMessage({type:'frames',frames,title:figma.root.name}); }
+figma.ui.onmessage=async(msg:unknown)=>{try {if(!msg||typeof msg!=='object'||!('type' in msg))return; if(msg.type==='list') await list();}catch{figma.ui.postMessage({type:'error',message:'Não foi possível ler esta página. Tente atualizar.'});}};
