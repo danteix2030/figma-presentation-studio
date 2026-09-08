@@ -1,7 +1,7 @@
 import {z} from 'zod';
 import {parseSlide,readMeta,META} from '../../../packages/figma-parser/src';
 import {LayerMetaSchema,SlideMetaSchema} from '../../../packages/presentation-schema/src/model';
-figma.showUI(__html__,{width:1100,height:720,themeColors:true});
+figma.showUI(__html__,{width:1180,height:760,themeColors:true,title:'figs.dec'});
 const Command=z.discriminatedUnion('type',[z.object({type:z.literal('list'),requestId:z.string()}),z.object({type:z.literal('parse'),requestId:z.string(),id:z.string()}),z.object({type:z.literal('export-slide'),requestId:z.string(),id:z.string(),quality:z.number().min(.25).max(3).default(1)}),z.object({type:z.literal('select'),requestId:z.string(),id:z.string()}),z.object({type:z.literal('save-layer'),requestId:z.string(),id:z.string(),meta:LayerMetaSchema}),z.object({type:z.literal('save-slide'),requestId:z.string(),id:z.string(),meta:SlideMetaSchema}),z.object({type:z.literal('save-order'),requestId:z.string(),ids:z.string().array().max(2000)})]);
 figma.ui.onmessage=async(raw:unknown)=>{const parsed=Command.safeParse(raw);if(!parsed.success)return;const msg=parsed.data;const send=(type:string,extra:Record<string,unknown>)=>figma.ui.postMessage({type,requestId:msg.requestId,...extra});try{let result:unknown;
 if(msg.type==='list'){await figma.currentPage.loadAsync();result={title:figma.root.name,order:readMeta(figma.currentPage).order??[],frames:figma.currentPage.children.filter(n=>['FRAME','COMPONENT','INSTANCE'].includes(n.type)).map((n,order)=>({id:n.id,name:n.name,x:n.x,y:n.y,width:n.width,height:n.height,order}))};}
