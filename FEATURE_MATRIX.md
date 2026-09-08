@@ -7,7 +7,7 @@ DONE requires tests; PARTIAL indicates working subset; BLOCKED external dependen
 |Research / architecture|PARTIAL|docs/RESEARCH.md; canonical architecture|Official sources read|Cloud details in respective phase|
 |Plugin registration / real Figma|DONE|Figma ID 1678935302970085901; registered Desktop directory|Opened in real Figma Design 2026-09-07|Design only; other editors pending|
 |Frame detection / selection / sorting / manual ordering|PARTIAL|Top-level frame/component/instance metadata and four sort modes|172 real nodes detected; 3 unit tests|Manual ordering pending|
-|Layer parser / fonts / fills / vectors / fidelity|TODO|Not implemented|No|Pending|
+|Layer parser / fonts / fills / vectors / fidelity|PARTIAL|Incremental layer parser, text metadata, raster fallback for masks/blur, canonical preview|Real vertical frame parsed and previewed in Figma|Mixed text styles, gradients and some effects use raster fallback|
 |Animations entrance / exit / emphasis / triggers|TODO|Not implemented|No|Pending|
 |Custom keyframes / cubic bezier / stagger|TODO|Not implemented|No|Pending|
 |Animation copy / bulk / presets / saved templates|TODO|Not implemented|No|Pending|
@@ -25,8 +25,8 @@ DONE requires tests; PARTIAL indicates working subset; BLOCKED external dependen
 |QR remote / expiring tokens / realtime|TODO|Not implemented|No|Pending|
 |Analytics dashboard / events / privacy|TODO|Not implemented|No|Pending|
 |Giphy / Pixabay / independent adapters|TODO|Not implemented|No|Pending|
-|PDF / compression / links / password|TODO|Not implemented|No|Pending|
-|PPTX / editable text / masters / Google / Keynote|TODO|Not implemented|No|Pending|
+|PDF / compression / links / password|PARTIAL|Real multi-page PDF generated from Figma frame renders; 3 quality levels|One-slide PDF generated from real Figma file and native save dialog opened|Links and password pending; visual output is rasterized|
+|PPTX / editable text / masters / Google / Keynote|PARTIAL|Real PPTX generator with one fitted Figma render per slide and notes containing source frame name|Typecheck and production bundle|Text/shapes are not editable; master slides pending|
 |PPTX import / Markdown import|TODO|Not implemented|No|Pending|
 |Canva export compatibility|TODO|Not implemented|No|Pending|
 |Spellcheck Portuguese / English / Spanish|TODO|Not implemented|No|Pending|
