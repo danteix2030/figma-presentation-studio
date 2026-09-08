@@ -16,8 +16,9 @@ function addEditableLayer(target:any,layer:Layer,sx:number,sy:number,ox=0,oy=0){
  else if(layer.fill!=='transparent')target.addShape('rect',{...common,fill:{color:hex(layer.fill)},line:{color:hex(layer.fill),transparency:100},radius:(layer.radius||0)*sx});
  for(const child of layer.children)addEditableLayer(target,child,sx,sy,ox+layer.x,oy+layer.y);
 }
-async function editablePptx(ids:string[],title:string,onProgress:(message:string)=>void){const pptx=new PptxGenJS();pptx.author='figs.dec';pptx.subject='Editable presentation exported from Figma';pptx.title=title;pptx.defineLayout({name:'FIGMA',width:13.333,height:7.5});pptx.layout='FIGMA';
- for(let i=0;i<ids.length;i++){onProgress(`Convertendo elementos editáveis ${i+1}/${ids.length}`);const source=await request<Slide>('parse',{id:ids[i]});const page=pptx.addSlide();page.background={color:hex(source.background)};const scale=Math.min(13.333/source.width,7.5/source.height),w=source.width*scale,h=source.height*scale,dx=(13.333-w)/2,dy=(7.5-h)/2;for(const layer of source.layers)addEditableLayer(page,layer,scale,scale,dx/scale,dy/scale);page.addNotes(source.meta.notes||`Frame do Figma: ${source.name}`);}
+async function editablePptx(ids:string[],title:string,onProgress:(message:string)=>void){const pptx=new PptxGenJS();pptx.author='figs.dec';pptx.subject='Presentation exported from Figma with visual fidelity';pptx.title=title;pptx.defineLayout({name:'FIGMA',width:13.333,height:7.5});pptx.layout='FIGMA';
+ const source=await raster(ids,2,onProgress);
+ for(let i=0;i<source.length;i++){onProgress(`Montando slide fiel ao Figma ${i+1}/${source.length}`);const item=source[i];const page=pptx.addSlide();page.addImage({data:'data:image/png;base64,'+bytesToBase64(item.bytes),x:0,y:0,w:13.333,h:7.5});page.addNotes(`Frame do Figma: ${item.name}`);}
  return await pptx.write({outputType:'blob'}) as Blob;
 }
 export async function exportPptx(ids:string[],title:string,_quality:number,onProgress:(message:string)=>void){const blob=await editablePptx(ids,title,onProgress);onProgress('Gerando PowerPoint editável…');download(blob,'application/vnd.openxmlformats-officedocument.presentationml.presentation',clean(title)+'.pptx');}
