@@ -6,7 +6,7 @@ DONE requires tests; PARTIAL indicates working subset; BLOCKED external dependen
 |---|---|---|---|---|
 |Research / architecture|PARTIAL|docs/RESEARCH.md; canonical architecture|Official sources read|Cloud details in respective phase|
 |Plugin registration / real Figma|DONE|Figma ID 1678935302970085901; registered Desktop directory|Opened in real Figma Design 2026-09-07|Design only; other editors pending|
-|Frame detection / selection / sorting / manual ordering|PARTIAL|Top-level frame/component/instance metadata and four sort modes|172 real nodes detected; 3 unit tests|Manual ordering pending|
+|Frame detection / selection / sorting / manual ordering|DONE|Top-level frame/component/instance metadata, four sort modes, thumbnail rail, drag reorder, up/down actions and per-slide export toggle|16-slide real deck in Figma; 3 unit tests|—|
 |Layer parser / fonts / fills / vectors / fidelity|PARTIAL|Incremental layer parser, text metadata, raster fallback for masks/blur, canonical preview|Real vertical frame parsed and previewed in Figma|Mixed text styles, gradients and some effects use raster fallback|
 |Animations entrance / exit / emphasis / triggers|PARTIAL|14 entrance/emphasis effects, timing, easing and trigger metadata; browser preview|Production build and real plugin editor|Exit sequencing and click orchestration pending|
 |Custom keyframes / cubic bezier / stagger|TODO|Not implemented|No|Pending|
@@ -27,7 +27,8 @@ DONE requires tests; PARTIAL indicates working subset; BLOCKED external dependen
 |Giphy / Pixabay / independent adapters|TODO|Not implemented|No|Pending|
 |PDF / compression / links / password|PARTIAL|Real multi-page PDF generated from Figma frame renders; 3 quality levels|16-slide PDF rendered from real Figma file and native save dialog opened|Links and password pending; visual output is rasterized|
 |PNG ZIP export|DONE|Ordered full-frame PNG images packaged with JSZip|Production build and shared export pipeline|Raster output by design|
-|PPTX / editable text / masters / Google / Keynote|PARTIAL|Real PPTX generator with one fitted Figma render per slide and notes containing source frame name|Typecheck and production bundle|Text/shapes are not editable; master slides pending|
+|PPTX / editable text / masters / Google / Keynote|PARTIAL|Layer-based PPTX: editable text boxes and native simple shapes, separate raster assets, SVG vector assets and speaker notes|One-slide PPTX saved and package inspected: 2 text nodes, 2 native shapes and 13 separate pictures|Complex masks/effects remain raster; masters and Keynote pending|
+|Google Slides direct export|PARTIAL|Drive multipart upload converts the editable PPTX to Google Slides and returns the edit link|Build and UI flow verified|Requires a user OAuth access token with `drive.file`; hosted OAuth client pending product credentials|
 |PPTX import / Markdown import|TODO|Not implemented|No|Pending|
 |Canva export compatibility|TODO|Not implemented|No|Pending|
 |Spellcheck Portuguese / English / Spanish|TODO|Not implemented|No|Pending|

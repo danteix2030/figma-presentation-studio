@@ -8,9 +8,7 @@
   "ui": "dist/ui.html",
   "documentAccess": "dynamic-page",
   "networkAccess": {
-    "allowedDomains": [
-      "none"
-    ]
+    "allowedDomains": ["https://www.googleapis.com"]
   },
   "id": "1678935302970085901"
 }
