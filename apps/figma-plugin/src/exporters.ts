@@ -13,7 +13,7 @@ function hex(value:string,fallback='FFFFFF'){return /^#[0-9a-f]{6}$/i.test(value
 function addEditableLayer(target:any,layer:Layer,sx:number,sy:number,ox=0,oy=0){const x=(ox+layer.x)*sx,y=(oy+layer.y)*sy,w=Math.max(.01,layer.width*sx),h=Math.max(.01,layer.height*sy);const common={x,y,w,h,rotate:layer.rotation,transparency:Math.round((1-layer.opacity)*100)};
  if(layer.type==='TEXT'&&layer.text!==undefined)target.addText(layer.text,{...common,fontFace:layer.fontFamily||'Arial',fontSize:Math.max(1,(layer.fontSize||16)*sy*.75),bold:(layer.fontWeight||400)>=600,color:hex(layer.fill,'111111'),align:(layer.align||'left') as any,valign:'mid',margin:0,breakLine:false,fit:'shrink'});
  else if(layer.asset)target.addImage({data:layer.asset,...common});
- else if(layer.fill!=='transparent')target.addShape(PptxGenJS.ShapeType.rect,{...common,fill:{color:hex(layer.fill)},line:{color:hex(layer.fill),transparency:100},radius:layer.radius*sx});
+ else if(layer.fill!=='transparent')target.addShape('rect',{...common,fill:{color:hex(layer.fill)},line:{color:hex(layer.fill),transparency:100},radius:(layer.radius||0)*sx});
  for(const child of layer.children)addEditableLayer(target,child,sx,sy,ox+layer.x,oy+layer.y);
 }
 async function editablePptx(ids:string[],title:string,onProgress:(message:string)=>void){const pptx=new PptxGenJS();pptx.author='figs.dec';pptx.subject='Editable presentation exported from Figma';pptx.title=title;pptx.defineLayout({name:'FIGMA',width:13.333,height:7.5});pptx.layout='FIGMA';
