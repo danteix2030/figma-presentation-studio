@@ -10,7 +10,7 @@ figs.dec transforma frames, componentes e instâncias do Figma em uma apresenta�
 
 Veja miniaturas dos slides, reorganize por arraste ou pelos controles de subir e descer, escolha exatamente quais slides serão exportados e configure notas, status, links, mídia e animações.
 
-Exporte como PDF, PowerPoint editável, apresentação web ou imagens PNG. A integração com Google Apresentações converte o conteúdo no Google Drive e devolve um link para continuar editando e compartilhar.
+Exporte como PDF, PowerPoint, apresentação web ou imagens PNG. O modo de fidelidade máxima preserva cada frame exatamente como foi composto no Figma. A integração com Google Apresentações converte o conteúdo no Google Drive e devolve um link para continuar editando e compartilhar.
 
 ## Category and tags
 
@@ -21,8 +21,11 @@ Exporte como PDF, PowerPoint editável, apresentação web ou imagens PNG. A int
 
 https://github.com/danteix2030/figma-presentation-studio/issues
 
+## Privacy policy
+
+https://github.com/danteix2030/figma-presentation-studio/blob/main/PRIVACY.md
+
 ## Media
 
 - Icon: `community-assets/figs-dec-icon-128.png`
 - Cover: `community-assets/figs-dec-community-cover-1920x1080.jpg`
-

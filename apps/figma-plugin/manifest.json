@@ -8,7 +8,8 @@
   "ui": "dist/ui.html",
   "documentAccess": "dynamic-page",
   "networkAccess": {
-    "allowedDomains": ["https://www.googleapis.com"]
+    "allowedDomains": ["https://www.googleapis.com"],
+    "reasoning": "O figs.dec usa a API do Google Drive somente quando a pessoa escolhe exportar para o Google Apresentações. A apresentação gerada é enviada diretamente para a conta Google autorizada pela própria pessoa."
   },
   "id": "1678935302970085901"
 }
